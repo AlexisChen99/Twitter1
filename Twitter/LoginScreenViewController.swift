@@ -15,8 +15,19 @@ class LoginScreenViewController: UIViewController {
 
         // Do any additional setup after loading the view.
     }
-    
 
+    //exacute when the button is taped
+    @IBAction func tapLoginButton(_ sender: Any) {
+        
+        let myURL = "https://api.twitter.com/oauth/request_token" //this is the twiiter ul
+        //call the twitter api
+        TwitterAPICaller.client?.login(url: myURL, success: {
+            self.performSegue(withIdentifier: "loginToHome", sender: self)
+        }, failure: { (Error) in
+            print("could not login in")
+        })
+    }
+    
     /*
     // MARK: - Navigation
 
